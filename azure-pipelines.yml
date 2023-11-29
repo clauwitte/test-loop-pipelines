@@ -23,12 +23,14 @@ stages:
     steps:
     - ${{ each filename in parameters.filenames }}:
       - powershell: |
-         Test-Path src/releasedocs/de
          Write-Host "##vso[task.setvariable variable=getFile;]Test-Path src/releasedocs/de"
       - script: echo ${{ parameters.getFile }}
         condition: ${{ eq(parameters.getFile, true) }}
+  - job: A2
+    dependsOn: A1
+    condition: eq(parameters.getFile, true)
+    steps:
       - script: Write-Host "vereiste bestanden zijn niet aanwezig"
-        condition: Failed()  
 
 
 # stages:
