@@ -23,7 +23,8 @@ stages:
     steps:
     - ${{ each filename in parameters.filenames }}:
       - powershell: |
-         Write-Host "##vso[task.setvariable variable=getFile;]Test-Path src/releasedocs/$(filename)"
+         $MyVariable = filename
+         Write-Host "##vso[task.setvariable variable=getFile;]Test-Path src/releasedocs/$(MyVariable)"
       - script: echo ${{ parameters.getFile }}
       - script: test -f "src/releasedocs/${{ filename }}"
       - script: exit 1
