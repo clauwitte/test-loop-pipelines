@@ -25,7 +25,6 @@ stages:
       - powershell: |
          Write-Host "##vso[task.setvariable variable=getFile;]Test-Path src/releasedocs/de"
       - script: echo ${{ parameters.getFile }}
-  
   - ${{ if eq(variables.getFile, true) }}:
   - job: B1
     steps:
