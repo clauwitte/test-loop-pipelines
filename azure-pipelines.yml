@@ -26,6 +26,8 @@ stages:
          Write-Host "##vso[task.setvariable variable=getFile;]Test-Path src/releasedocs/de"
       - script: echo ${{ parameters.getFile }}
         condition: ${{ eq(parameters.getFile, true) }}
+
+  - ${{ if eq(parameters.getFile, true) }}      
   - job: A2
     steps:
       - script: Test-Path "vereiste bestanden zijn niet aanwezig"
