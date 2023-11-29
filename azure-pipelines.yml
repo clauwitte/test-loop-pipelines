@@ -28,12 +28,12 @@ stages:
       - script: exit 1
         condition: ${{ eq(parameters.getFile, false) }}
 
-- stage: B
-  condition: ${{ eq(parameters.getFile, true) }}
-  jobs:
-  - job:
-    steps:
-    - script: echo "hello world"
+# - stage: B
+#   condition: ${{ eq(parameters.getFile, true) }}
+#   jobs:
+#   - job:
+#     steps:
+#     - script: echo "hello world"
 
   # - ${{ if eq(parameters.getFile, true) }}:      
   #   - job: A2
