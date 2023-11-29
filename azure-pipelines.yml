@@ -22,10 +22,15 @@ stages:
   - job: A1
     steps:
     - ${{ each filename in parameters.filenames }}:
-      - powershell: Write-Host "##vso[task.setvariable variable=getFile;]Test-Path /src/releasedocs/$filename"
-      - script: echo ${{ parameters.getFile }}
+      #- powershell: Write-Host "##vso[task.setvariable variable=getFile;]Test-Path /src/releasedocs/$filename"
+      #- script: echo ${{ parameters.getFile }}
       # - script: test -f "src/releasedocs/${{ filename }}"
-      - powershell: Test-Path "src/releasedocs/$filename"
+      - task: PowerShell@2
+        inputs:
+          ignoreLASTEXITCODE: true
+          targetType: inline
+          script:
+            Test-Path "src/releasedocs/$filename"
       # - script: exit 1
       #   condition: ${{ eq(parameters.getFile, false) }}
 
