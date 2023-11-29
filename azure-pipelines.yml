@@ -23,7 +23,7 @@ stages:
     steps:
     - ${{ each filename in parameters.filenames }}:
       - powershell: |
-         Write-Host "##vso[task.setvariable variable=getFile;]Test-Path src/releasedocs/${{ filename }}"
+         Write-Host "##vso[task.setvariable variable=getFile;]Test-Path src/releasedocs/$filename"
       - script: echo ${{ parameters.getFile }}
       - script: exit 1
         condition: ${{ eq(parameters.getFile, false) }}
