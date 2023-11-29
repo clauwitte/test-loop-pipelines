@@ -24,7 +24,7 @@ stages:
     - ${{ each filename in parameters.filenames }}:
       #- powershell: Write-Host "##vso[task.setvariable variable=getFile;]Test-Path /src/releasedocs/$filename"
       #- script: echo ${{ parameters.getFile }}
-      - script: test-path "src/releasedocs/${{ filename }}"
+      - script: if not exist "src/releasedocs/${{ filename }}" exit 1
       #- pwsh: if ( -not ( Test-Path -Path "src/releasedocs/$filename" ) ) { exit 0 }
 
 # - script: exit 1
