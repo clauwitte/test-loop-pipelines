@@ -27,7 +27,7 @@ stages:
       - script: echo ${{ parameters.getFile }}
         condition: ${{ eq(parameters.getFile, true) }}
 
-  - ${{ if eq(parameters.getFile, true) }}      
+  - ${{ if eq(parameters.getFile, true) }}:      
   - job: A2
     steps:
       - script: Test-Path "vereiste bestanden zijn niet aanwezig"
