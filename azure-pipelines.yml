@@ -26,8 +26,8 @@ stages:
       - script: echo ${{ parameters.getFile }}
       # - script: test -f "src/releasedocs/${{ filename }}"
       - powershell: Test-Path "src/releasedocs/$filename"
-      - script: exit 1
-        condition: ${{ eq(parameters.getFile, false) }}
+      # - script: exit 1
+      #   condition: ${{ eq(parameters.getFile, false) }}
 
 # - stage: B
 #   condition: ${{ eq(parameters.getFile, true) }}
