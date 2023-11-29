@@ -11,7 +11,7 @@ pool:
 parameters:
   - name: filenames
     type: object
-    default: ['dummyfile.txt','dummyfile2.txt']
+    default: ['dummyfile.txt','dummyfile2.txt','DUMMY']
   - name: getFile
     type: boolean
     default: false
