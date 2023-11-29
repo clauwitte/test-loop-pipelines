@@ -28,8 +28,8 @@ stages:
         condition: ${{ eq(parameters.getFile, true) }}
 
   - ${{ if eq(parameters.getFile, true) }}:      
-  - job: A2
-    steps:
+    - job: A2
+      steps:
       - script: Test-Path "vereiste bestanden zijn niet aanwezig"
         # condition: ${{ eq(parameters.getFile, true) }}
 
