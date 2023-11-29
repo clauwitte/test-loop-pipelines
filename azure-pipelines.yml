@@ -25,7 +25,8 @@ stages:
       - powershell: |
          Write-Host "##vso[task.setvariable variable=getFile;]Test-Path src/releasedocs/${{ filename }}"
       - script: echo ${{ parameters.getFile }}
-      - script: exit
+      - script: |
+         throw 'Exiting';
         condition: ${{ eq(parameters.getFile, false) }}
 # - stage: B
 #   condition: ${{ eq(parameters.getFile, true) }}
