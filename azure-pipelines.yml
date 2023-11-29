@@ -18,4 +18,4 @@ stages:
   - job: A1
     steps:
     - ${{ each filename in parameters.filenames }}:
-      - script: echo ${{ client }}
+      - script: echo ${{ filename }}
