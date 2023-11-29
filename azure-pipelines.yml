@@ -12,6 +12,9 @@ parameters:
   - name: filenames
     type: object
     default: ['dummyfile.txt','dummyfile2.txt']
+  - name: getFile
+    type: boolean
+    default: false
     
 stages:
 - stage: A
@@ -20,6 +23,6 @@ stages:
     steps:
     - ${{ each filename in parameters.filenames }}:
       - powershell: |
-         Set-Variable -Name ISFILE -Value (Test-Path src/releasedocs/${{ filename }})
-      - script: echo $(ISFILE)
+         Write-Host "##vso[task.setvariable variable=myVar;]Test-Path src/releasedocs/${{ filename }}"
+      - script: echo $(getFile)
       
