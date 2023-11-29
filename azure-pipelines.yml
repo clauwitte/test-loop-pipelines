@@ -12,6 +12,9 @@ parameters:
   - name: filenames
     type: object
     default: ['dummyfile.txt','dummyfile2.txt']
+  - name: getFile
+    type: boolean
+    default: false
     
 stages:
 - stage: A
@@ -19,4 +22,16 @@ stages:
   - job: A1
     steps:
     - ${{ each filename in parameters.filenames }}:
-      - powershell: Test-Path "src/releasedocs/filename"
+      - powershell: |
+         Write-Host "##vso[task.setvariable variable=getFile;]Test-Path src/releasedocs/de"
+      - script: echo ${{ parameters.getFile }}
+        condition: eq(variables.getFile, true)
+
+
+# stages:
+# - stage: A
+#   jobs:
+#   - job: A1
+#     steps:
+#     - ${{ each filename in parameters.filenames }}:
+#       - powershell: Test-Path "src/releasedocs/filename"
