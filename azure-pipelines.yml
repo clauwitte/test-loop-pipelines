@@ -25,7 +25,9 @@ stages:
       - powershell: |
          Write-Host "##vso[task.setvariable variable=getFile;]Test-Path src/releasedocs/de"
       - script: echo ${{ parameters.getFile }}
-        condition: eq(variables.getFile, true)
+        condition: ${{ eq(parameters.getFile, true) }}
+      - script: Write-Host "vereiste bestanden zijn niet aanwezig"
+        condition: Failed()  
 
 
 # stages:
