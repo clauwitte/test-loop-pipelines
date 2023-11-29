@@ -20,6 +20,3 @@ stages:
     steps:
     - ${{ each filename in parameters.filenames }}:
       - script: Test-Path src/releasedocs/${{ filename }}
-        condition: succeeded()
-      - script: Write-Host "vereiste bestanden zijn niet aanwezig"
-        condition: Failed()
