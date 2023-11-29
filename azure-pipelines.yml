@@ -24,6 +24,7 @@ stages:
     - ${{ each filename in parameters.filenames }}:
       - powershell: |
          Write-Host "##vso[task.setvariable variable=getFile;]Test-Path src/releasedocs/${{ filename }}"
+      - script: echo ${getFile}
       - script: echo ${{ parameters.getFile }}
         condition: ${{ eq(parameters.getFile, true) }}
 
