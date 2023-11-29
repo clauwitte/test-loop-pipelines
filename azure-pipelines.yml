@@ -23,11 +23,10 @@ stages:
     steps:
     - ${{ each filename in parameters.filenames }}:
       - powershell: |
-         Write-Host "##vso[task.setvariable variable=getFile;]Test-Path src/releasedocs/${{ filename }}"
+         Write-Host "##vso[task.setvariable variable=getFile;]Test-Path src/releasedocs/de"
       - script: echo ${{ parameters.getFile }}
-        condition: eq(variables.getFile, true)
   - job: B1
-    condition: eq(variables.getFile, false) 
+    condition: eq(variables.getFile, true) 
     dependsOn: A1
     steps:
-    - script: echo missing files 
+    - script: echo no missing files 
