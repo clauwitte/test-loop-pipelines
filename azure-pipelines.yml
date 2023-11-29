@@ -10,7 +10,7 @@ pool:
 
 parameters:
   - name: filenames
-    values: ['dummyfile.txt','dummyfile2.txt']
+    default: ['dummyfile.txt','dummyfile2.txt']
     
 stages:
 - stage: A
