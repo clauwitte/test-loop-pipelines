@@ -25,6 +25,14 @@ stages:
       - powershell: |
          Write-Host "##vso[task.setvariable variable=myVar;]Test-Path src/releasedocs/${{ filename }}"
       - script: echo ${{ parameters.getFile }}
+  - job: B1
+    dependsOn: A1
+    steps:
+    - script: echo 'hello world'  
       
 - stage: B 
-  condition: and(succeeded(), eq(variables.getFile, true))    
+  condition: eq(variables.getFile, true)
+  jobs:
+  - job:
+    steps:
+    - script: echo 'found all files'
