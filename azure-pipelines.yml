@@ -1,0 +1,21 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+pool:
+  vmImage: ubuntu-latest
+
+parameters:
+  - name: filenames
+    values: ['dummyfile.txt','dummyfile2.txt']
+    
+stages:
+- stage: A
+  jobs:
+  - job: A1
+    steps:
+    - ${{ each filename in parameters.filenames }}:
+      - script: echo ${{ client }}
