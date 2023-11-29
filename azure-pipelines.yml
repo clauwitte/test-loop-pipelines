@@ -25,16 +25,15 @@ stages:
       - powershell: |
          Write-Host "##vso[task.setvariable variable=getFile;]Test-Path src/releasedocs/${{ filename }}"
       - script: echo ${{ parameters.getFile }}
-      - script: test -f src/releasedocs/frefre
-      - script: |
-         throw 'Exiting';
-        condition: ${{ eq(parameters.getFile, false) }}
-# - stage: B
-#   condition: ${{ eq(parameters.getFile, true) }}
-#   jobs:
-#   - job:
-#     steps:
-#     - script: echo "hello world"
+      - script: exit 1
+        # condition: ${{ eq(parameters.getFile, false) }}
+
+- stage: B
+  condition: ${{ eq(parameters.getFile, true) }}
+  jobs:
+  - job:
+    steps:
+    - script: echo "hello world"
 
   # - ${{ if eq(parameters.getFile, true) }}:      
   #   - job: A2
