@@ -30,7 +30,7 @@ stages:
         #  ignoreLASTEXITCODE: true
          targetType: inline
          script:
-           Test-Path "src/releasedocs/$filename" || exit 1
+           if (!(Test-Path "src/releasedocs/$filename")) { exit 1 }
       # - script: exit 1
       #   condition: ${{ eq(parameters.getFile, false) }}
 
