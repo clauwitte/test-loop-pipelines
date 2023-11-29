@@ -12,9 +12,6 @@ parameters:
   - name: filenames
     type: object
     default: ['dummyfile.txt','dummyfile2.txt']
-  - name: getFile
-    type: boolean
-    default: false
     
 stages:
 - stage: A
