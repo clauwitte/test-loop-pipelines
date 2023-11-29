@@ -25,7 +25,9 @@ stages:
       - powershell: |
          Write-Host "##vso[task.setvariable variable=getFile;]Test-Path src/releasedocs/de"
       - script: echo ${{ parameters.getFile }}
-  - ${{ if eq(variables.getFile, true) }}:
-  - job: B1
-    steps:
-    - script: echo no missing files 
+- ${{ if eq(variables.getFile, true) }}:
+  - stage: B1
+    jobs:
+    - job:
+      steps:
+      - script: echo no missing files 
