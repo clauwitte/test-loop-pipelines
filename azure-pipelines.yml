@@ -26,7 +26,7 @@ stages:
          Write-Host "##vso[task.setvariable variable=getFile;]Test-Path src/releasedocs/${{ filename }}"
       - script: echo ${{ parameters.getFile }}
       - script: exit 1
-        # condition: ${{ eq(parameters.getFile, false) }}
+        condition: ${{ eq(parameters.getFile, false) }}
 
 - stage: B
   condition: ${{ eq(parameters.getFile, true) }}
