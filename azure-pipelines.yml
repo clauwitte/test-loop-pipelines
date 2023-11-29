@@ -29,7 +29,7 @@ stages:
   - job: A2
     steps:
       - script: Test-Path "vereiste bestanden zijn niet aanwezig"
-        condition: ${{ eq(parameters.getFile, true) }}
+        # condition: ${{ eq(parameters.getFile, true) }}
 
 
 # stages:
