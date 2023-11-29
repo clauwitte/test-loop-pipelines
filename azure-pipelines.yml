@@ -22,12 +22,6 @@ stages:
   - job: A1
     steps:
     - ${{ each filename in parameters.filenames }}:
-      - script: Test-Path src/releasedocs/de
+      - script: Test-Path src/releasedocs/${{ filenames }}
       - script: Write-Host "vereiste bestanden zijn niet aanwezig"
         condition: Failed()
-- ${{ if eq(variables.getFile, true) }}:
-  - stage: B1
-    jobs:
-    - job:
-      steps:
-      - script: echo no missing files 
