@@ -23,8 +23,8 @@ stages:
     steps:
     - ${{ each filename in parameters.filenames }}:
       - powershell: |
-         Write-Host "##vso[task.setvariable variable=myVar;]Test-Path src/releasedocs/${{ filename }}"
-      - script: echo ${{ myVar }}
+         Write-Host "##vso[task.setvariable variable=parameters.getFile;]Test-Path src/releasedocs/${{ filename }}"
+      - script: echo ${{ parameters.getFile }}
   - job: B1
     condition: eq(parameters.parameters,true) 
     dependsOn: A1
