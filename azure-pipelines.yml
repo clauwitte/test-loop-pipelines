@@ -19,4 +19,7 @@ stages:
   - job: A1
     steps:
     - ${{ each filename in parameters.filenames }}:
-      - powershell: Test-Path src/releasedocs/filename
+      - powershell: |
+         Set-Variable -Name ISFILE -Value (Test-Path src/releasedocs/${{ filename }})
+      - script: echo $(ISFILE)
+      
