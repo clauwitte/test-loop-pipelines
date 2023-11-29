@@ -22,9 +22,7 @@ stages:
   - job: A1
     steps:
     - ${{ each filename in parameters.filenames }}:
-      - powershell: |
-         Write-Host "##vso[task.setvariable variable=getFile;]Test-Path src/releasedocs/de"
-      - script: echo ${{ parameters.getFile }}
+      - script: Test-Path src/releasedocs/de
 - ${{ if eq(variables.getFile, true) }}:
   - stage: B1
     jobs:
