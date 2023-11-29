@@ -26,7 +26,7 @@ stages:
          Write-Host "##vso[task.setvariable variable=getFile;]Test-Path src/releasedocs/${{ filename }}"
       - script: echo ${{ parameters.getFile }}
   - job: B1
-    condition: eq(parameters.getFile, true) 
+    condition: eq(variables.getFile, true) 
     dependsOn: A1
     steps:
     - script: echo no missing files 
