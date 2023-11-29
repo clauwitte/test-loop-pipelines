@@ -22,6 +22,6 @@ stages:
   - job: A1
     steps:
     - ${{ each filename in parameters.filenames }}:
-      - script: Test-Path src/releasedocs/${{ filenames }}
+      - script: Test-Path src/releasedocs/${{ filename }}
       - script: Write-Host "vereiste bestanden zijn niet aanwezig"
         condition: Failed()
