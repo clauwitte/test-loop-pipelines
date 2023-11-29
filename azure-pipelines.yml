@@ -29,7 +29,7 @@ stages:
        inputs:
          targetType: inline
          script:
-           if (!(Test-Path "src/releasedocs/$filename")) { exit 1 }
+           if ( -not ( Test-Path -Path "src/releasedocs/$filename" ) ) { exit 1 }
 
 # - script: exit 1
 #   condition: ${{ eq(parameters.getFile, false) }}
