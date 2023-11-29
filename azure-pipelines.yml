@@ -25,4 +25,10 @@ stages:
       - powershell: |
          Write-Host "##vso[task.setvariable variable=myVar;]Test-Path src/releasedocs/${{ filename }}"
       - script: echo ${{ parameters.getFile }}
+      condition: and(succeeded(), eq(variables.getFile, true))
+  - job: A2
+    dependsOn: A1
+    condition: failed()    
+    steps:
+    - script: echo missing files
       
